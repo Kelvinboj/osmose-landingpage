@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Osmose Innovation - Conseil BTP & Innovation</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#2563EB', // Royal Blue
+                            dark: '#111827', // Dark Text
+                            light: '#F9FAFB', // Light Gray Background
+                        }
+                    },
+                    borderRadius: {
+                        '3xl': '1.5rem',
+                        '4xl': '2rem',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Smooth scrolling */
+        html { scroll-behavior: smooth; }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        /* Animation Fade In pour slider témoignages */
+        .fade-in { animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Masquer la scrollbar pour le slider horizontal des articles mais garder le scroll */
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="text-gray-600 antialiased bg-white">
+
+    <nav class="w-full bg-white/80 backdrop-blur-md fixed top-0 z-50 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <a href="#" class="flex items-center gap-3">
+                        <svg width="20" height="3O" viewBox="0 0 48 71" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-10 ">
+                            <path d="M24 71C37.2332 71 48 60.3631 48 47.2897C48 42.993 46.8332 38.9583 44.8177 35.5C46.8332 32.0155 48 28.007 48 23.7103C48 10.6369 37.2332 0 24 0C10.7669 0 4.88839e-05 10.6369 4.88839e-05 23.7103C4.88839e-05 28.007 1.1669 32.0417 3.18237 35.5C1.1669 38.9845 4.88839e-05 42.993 4.88839e-05 47.2897C-0.0264704 60.3631 10.7404 71 24 71ZM24 62.459C15.5404 62.459 8.67186 55.6734 8.67186 47.3159C8.67186 45.6653 8.93705 44.0672 9.44092 42.5738C13.4719 45.6391 18.537 47.4469 24 47.4469C29.463 47.4469 34.5017 45.6391 38.5591 42.5738C39.063 44.0672 39.3282 45.6653 39.3282 47.3159C39.3282 55.6472 32.4597 62.459 24 62.459ZM14.4 35.5C17.0254 33.4041 20.3669 32.1465 24 32.1465C27.6332 32.1465 30.9746 33.4041 33.6 35.5C30.9746 37.5959 27.6332 38.8535 24 38.8535C20.3669 38.8535 17.0254 37.5959 14.4 35.5ZM24 8.54096C32.4597 8.54096 39.3282 15.3266 39.3282 23.6841C39.3282 25.3347 39.063 26.9328 38.5591 28.4262C34.5282 25.3609 29.463 23.5531 24 23.5531C18.537 23.5531 13.4719 25.3609 9.44092 28.4262C8.93705 26.9328 8.67186 25.3347 8.67186 23.6841C8.67186 15.3528 15.5404 8.54096 24 8.54096Z" fill="#2563EB"/>
+                        </svg>
+                        <span class="font-bold text-2xl text-brand-dark tracking-tight">Osmose</span>
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex space-x-6 items-center">
+                    <a href="#home" class="text-gray-600 hover:text-brand-blue font-medium transition">Accueil</a>
+                    <a href="#services" class="text-gray-600 hover:text-brand-blue font-medium transition">Services</a>
+                    <a href="#Review" class="text-gray-600 hover:text-brand-blue font-medium transition">Témoignages</a>
+                    <a href="#articles" class="text-gray-600 hover:text-brand-blue font-medium transition">Articles</a>
+                    <a href="#about" class="text-gray-600 hover:text-brand-blue font-medium transition">À propos</a>
+                </div>
+
+                <div class="hidden md:flex">
+                    <a href="#contact" class="bg-brand-blue hover:bg-blue-700 text-white px-6 py-2.5 rounded-full font-medium transition shadow-lg shadow-blue-500/30">
+                        Contact
+                    </a>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-brand-blue focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full left-0 top-20 shadow-lg">
+            <div class="flex flex-col px-4 py-6 space-y-4">
+                <a href="#home" class="text-lg font-medium text-gray-800 hover:text-brand-blue" onclick="toggleMenu()">Accueil</a>
+                <a href="#services" class="text-lg font-medium text-gray-800 hover:text-brand-blue" onclick="toggleMenu()">Services</a>
+                <a href="#Review" class="text-lg font-medium text-gray-800 hover:text-brand-blue" onclick="toggleMenu()">Témoignages</a>
+                <a href="#articles" class="text-lg font-medium text-gray-800 hover:text-brand-blue" onclick="toggleMenu()">Articles</a>
+                <a href="#about" class="text-lg font-medium text-gray-800 hover:text-brand-blue" onclick="toggleMenu()">À propos</a>
+                <a href="#contact" class="text-lg font-medium text-brand-blue" onclick="toggleMenu()">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="pt-32 pb-20 lg:pt-40 lg:pb-28 bg-brand-light relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <div class="space-y-8">
+                    <h1 class="text-5xl lg:text-6xl font-bold text-brand-dark leading-[1.1] tracking-tight">
+                        Conseils d'experts, <br />
+                        <span class="text-brand-blue">Innover dans le BTP.</span>
+                    </h1>
+                    <p class="text-lg text-gray-500 max-w-lg leading-relaxed">
+                        Nous sommes spécialisés dans les stratégies de gestion et d'innovation pour le secteur du BTP. Adaptez-vous aux changements et faites évoluer vos opérations grâce à nos solutions sur mesure.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#contact" class="bg-brand-blue hover:bg-blue-700 text-white px-8 py-3.5 rounded-full font-medium transition flex items-center gap-2 shadow-lg shadow-blue-500/30">
+                            Commencer <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="#services" class="border border-gray-300 hover:border-brand-blue hover:text-brand-blue bg-white text-gray-700 px-8 py-3.5 rounded-full font-medium transition">
+                            Nos Services
+                        </a>
+                    </div>
+                </div>
+
+                <div class="relative group"> 
+                    <div class="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1600&auto=format&fit=crop" 
+                             alt="Réunion Architecture Moderne" 
+                             class="w-full h-full object-cover transform transition duration-700 ease-in-out group-hover:scale-110">
+                    </div>
+                    <div class="absolute -z-10 top-10 -right-10 w-64 h-64 bg-blue-100 rounded-full blur-3xl opacity-50"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="relative -mt-16 z-20 px-4 mb-20">
+        <div class="max-w-7xl mx-auto bg-white rounded-3xl shadow-xl p-8 lg:p-12">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center divide-x divide-gray-100">
+                <div>
+                    <p class="text-4xl font-bold text-brand-dark mb-2"><span class="counter" data-target="25">0</span>+</p>
+                    <p class="text-sm text-gray-500">Entreprises accompagnées</p>
+                </div>
+                <div>
+                    <p class="text-4xl font-bold text-brand-dark mb-2"><span class="counter" data-target="48">0</span></p>
+                    <p class="text-sm text-gray-500">Formules cosmétiques</p>
+                </div>
+                <div>
+                    <p class="text-4xl font-bold text-brand-dark mb-2"><span class="counter" data-target="35">0</span></p>
+                    <p class="text-sm text-gray-500">Innovations textiles</p>
+                </div>
+                <div class="border-none">
+                    <p class="text-4xl font-bold text-brand-dark mb-2"><span class="counter" data-target="50">0</span></p>
+                    <p class="text-sm text-gray-500">Innovations technologiques</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start relative">
+                
+                <div class="space-y-8 order-2 lg:order-1">
+                    <div class="inline-block px-4 py-1.5 rounded-full border border-gray-300 text-xs font-bold tracking-wider uppercase text-gray-500">
+                        Expertise
+                    </div>
+                    <h2 class="text-4xl font-bold text-brand-dark leading-tight">
+                        Découvrez nos solutions au service des PME et TPE
+                    </h2>
+                    <p class="text-gray-500 text-lg leading-relaxed">
+                        Imprégnés d'audace, d'humanité, de pertinence et d'originalité, nous ne nous contentons pas de suivre les tendances, nous les créons.
+                        Notre héritage, forgé au sein de piliers de l'innovation tels que Decathlon, Salomon ou Dim, est notre tremplin vers l'inédit.
+                    </p>
+                    <div class="space-y-6 pt-4">
+                        <div class="group p-6 rounded-2xl bg-gray-50 hover:bg-blue-50 transition duration-300 border border-transparent hover:border-blue-100">
+                            <div class="flex gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-blue-100 text-brand-blue flex items-center justify-center text-xl shrink-0">
+                                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-brand-dark mb-2">Veille et Audit</h3>
+                                    <p class="text-sm text-gray-500 mb-3">Analyse concurrentielle et conformité réglementaire.</p>
+                                    <ul class="text-sm space-y-2 text-gray-600">
+                                        <li><i class="fa-solid fa-check text-brand-blue mr-2"></i>Audit des processus internes</li>
+                                        <li><i class="fa-solid fa-check text-brand-blue mr-2"></i>Veille technologique BTP</li>
+                                        <li><i class="fa-solid fa-check text-brand-blue mr-2"></i>Analyse de risques</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="group p-6 rounded-2xl bg-gray-50 hover:bg-blue-50 transition duration-300 border border-transparent hover:border-blue-100">
+                            <div class="flex gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-blue-100 text-brand-blue flex items-center justify-center text-xl shrink-0">
+                                    <i class="fa-solid fa-chess"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-brand-dark mb-2">Innovation Stratégique</h3>
+                                    <p class="text-sm text-gray-500 mb-3">Transformer les idées en réalités financées.</p>
+                                    <ul class="text-sm space-y-2 text-gray-600">
+                                        <li><i class="fa-solid fa-check text-brand-blue mr-2"></i>Financement de l'innovation</li>
+                                        <li><i class="fa-solid fa-check text-brand-blue mr-2"></i>Feuille de route stratégique</li>
+                                        <li><i class="fa-solid fa-check text-brand-blue mr-2"></i>Intelligence économique</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="group p-6 rounded-2xl bg-gray-50 hover:bg-blue-50 transition duration-300 border border-transparent hover:border-blue-100">
+                            <div class="flex gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-blue-100 text-brand-blue flex items-center justify-center text-xl shrink-0">
+                                    <i class="fa-solid fa-graduation-cap"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-brand-dark mb-2">Formation & Ateliers</h3>
+                                    <p class="text-sm text-gray-500 mb-3">Donner aux équipes les moyens de penser différemment.</p>
+                                    <ul class="text-sm space-y-2 text-gray-600">
+                                        <li><i class="fa-solid fa-check text-brand-blue mr-2"></i>Séminaires d'innovation</li>
+                                        <li><i class="fa-solid fa-check text-brand-blue mr-2"></i>Ateliers "Fresque de l'innovation"</li>
+                                        <li><i class="fa-solid fa-check text-brand-blue mr-2"></i>Conduite du changement</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#contact" class="inline-flex items-center gap-2 text-brand-blue font-semibold hover:gap-3 transition-all mt-4">
+                        Discuter de votre projet <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="relative order-1 lg:order-2 static lg:sticky lg:top-24 lg:mt-24 h-fit group">
+                    <div class="rounded-3xl shadow-2xl overflow-hidden h-[300px] lg:h-[500px]">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1600&auto=format&fit=crop" 
+                             alt="Équipe en réunion" 
+                             class="w-full h-full object-cover transform transition duration-700 ease-in-out group-hover:scale-110">
+                    </div>
+                    
+                    <div class="absolute bottom-8 left-8 bg-white p-4 rounded-2xl shadow-lg max-w-xs z-10">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                                <i class="fa-solid fa-seedling"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-brand-dark">Croissance Durable</p>
+                                <p class="text-xs text-gray-500">Valeur long-terme</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="Review" class="py-24 bg-white border-t border-gray-100">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <div class="inline-block px-4 py-1.5 rounded-full border border-gray-300 text-xs font-bold tracking-wider uppercase text-gray-500 mb-4">
+                    Témoignages
+                </div>
+                <h2 class="text-3xl font-bold text-brand-dark mb-4">Ils nous font confiance</h2>
+                <p class="text-gray-500">Découvrez les retours de nos partenaires en région Centre-Val de Loire.</p>
+            </div>
+            
+            <div class="relative w-full aspect-video rounded-3xl overflow-hidden shadow-2xl group cursor-pointer bg-black">
+                <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1600&auto=format&fit=crop" alt="Dirigeant PME Centre Val de Loire" class="w-full h-full object-cover opacity-80 group-hover:opacity-60 transition duration-500">
+                
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center group-hover:scale-110 transition duration-300 border border-white/50">
+                        <i class="fa-solid fa-play text-white text-3xl ml-1"></i>
+                    </div>
+                </div>
+
+                <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 bg-gradient-to-t from-black/80 to-transparent">
+                    <p class="text-white font-bold text-lg md:text-xl">Témoignage d'un dirigeant d'une PME du Centre-Val de Loire</p>
+                    <p class="text-gray-300 text-sm mt-1">Impact de l'audit innovation sur la productivité</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-brand-light">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            
+            <div id="testimonial-container" class="min-h-[300px] flex flex-col justify-center">
+                <div class="w-20 h-20 mx-auto rounded-full overflow-hidden mb-8 border-4 border-white shadow-lg">
+                    <img id="t-image" src="" alt="Portrait" class="w-full h-full object-cover">
+                </div>
+                
+                <blockquote class="text-2xl md:text-3xl font-medium text-brand-dark leading-relaxed mb-8 fade-in">
+                    "<span id="t-quote"></span>"
+                </blockquote>
+                
+                <div class="mb-10 fade-in">
+                    <p id="t-author" class="font-bold text-brand-dark text-lg"></p>
+                    <p id="t-role" class="text-gray-500"></p>
+                </div>
+            </div>
+
+            <div class="flex justify-center gap-4">
+                <button onclick="prevTestimonial()" class="w-12 h-12 rounded-full border border-blue-200 text-brand-blue hover:bg-brand-blue hover:text-white transition flex items-center justify-center">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <button onclick="nextTestimonial()" class="w-12 h-12 rounded-full border border-blue-200 text-brand-blue hover:bg-brand-blue hover:text-white transition flex items-center justify-center">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="articles" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+                <div>
+                    <div class="inline-block px-4 py-1.5 rounded-full border border-gray-300 text-xs font-bold tracking-wider uppercase text-gray-500 mb-4">
+                        Nos Réalisations
+                    </div>
+                    <h2 class="text-4xl font-bold text-brand-dark">Cas d'études & Projets</h2>
+                </div>
+                <div class="hidden md:flex gap-2">
+                    <button class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-brand-blue hover:border-brand-blue transition" onclick="document.getElementById('articles-slider').scrollBy({left: -400, behavior: 'smooth'})">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                    <button class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-brand-blue hover:border-brand-blue transition" onclick="document.getElementById('articles-slider').scrollBy({left: 400, behavior: 'smooth'})">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="articles-slider" class="flex overflow-x-auto gap-6 snap-x snap-mandatory pb-8 hide-scroll">
+                
+                <div class="min-w-[300px] md:min-w-[380px] snap-center bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden group hover:shadow-xl transition-all duration-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&auto=format&fit=crop" alt="Chantier Eco" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-brand-blue text-xs font-bold uppercase tracking-wide">Construction Durable</span>
+                        <h3 class="text-xl font-bold text-brand-dark mt-2 mb-3 group-hover:text-brand-blue transition">Rénovation Énergétique BTP</h3>
+                        <p class="text-gray-500 text-sm mb-4 line-clamp-3">Transformation d'un parc immobilier de bureaux avec intégration de matériaux biosourcés pour une PME lyonnaise.</p>
+                        <a href="#" class="text-brand-dark font-medium text-sm hover:text-brand-blue flex items-center gap-1">Lire l'étude <i class="fa-solid fa-arrow-right text-xs"></i></a>
+                    </div>
+                </div>
+
+                <div class="min-w-[300px] md:min-w-[380px] snap-center bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden group hover:shadow-xl transition-all duration-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800&auto=format&fit=crop" alt="Tech Lab" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-brand-blue text-xs font-bold uppercase tracking-wide">R&D Matériaux</span>
+                        <h3 class="text-xl font-bold text-brand-dark mt-2 mb-3 group-hover:text-brand-blue transition">Nouveau Béton Allégé</h3>
+                        <p class="text-gray-500 text-sm mb-4 line-clamp-3">Accompagnement au financement et au dépôt de brevet pour une innovation majeure dans la formulation béton.</p>
+                        <a href="#" class="text-brand-dark font-medium text-sm hover:text-brand-blue flex items-center gap-1">Lire l'étude <i class="fa-solid fa-arrow-right text-xs"></i></a>
+                    </div>
+                </div>
+
+                <div class="min-w-[300px] md:min-w-[380px] snap-center bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden group hover:shadow-xl transition-all duration-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" alt="Data" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-brand-blue text-xs font-bold uppercase tracking-wide">Digitalisation</span>
+                        <h3 class="text-xl font-bold text-brand-dark mt-2 mb-3 group-hover:text-brand-blue transition">Jumeau Numérique Industriel</h3>
+                        <p class="text-gray-500 text-sm mb-4 line-clamp-3">Implémentation d'une stratégie de jumeau numérique pour optimiser la maintenance prédictive des équipements.</p>
+                        <a href="#" class="text-brand-dark font-medium text-sm hover:text-brand-blue flex items-center gap-1">Lire l'étude <i class="fa-solid fa-arrow-right text-xs"></i></a>
+                    </div>
+                </div>
+
+                <div class="min-w-[300px] md:min-w-[380px] snap-center bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden group hover:shadow-xl transition-all duration-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1664575602276-acd073f104c1?q=80&w=800&auto=format&fit=crop" alt="Textile" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-brand-blue text-xs font-bold uppercase tracking-wide">Textile Technique</span>
+                        <h3 class="text-xl font-bold text-brand-dark mt-2 mb-3 group-hover:text-brand-blue transition">Fibres Isolantes Bio</h3>
+                        <p class="text-gray-500 text-sm mb-4 line-clamp-3">Développement d'une nouvelle gamme d'isolants textiles à base de chanvre pour l'habitat durable.</p>
+                        <a href="#" class="text-brand-dark font-medium text-sm hover:text-brand-blue flex items-center gap-1">Lire l'étude <i class="fa-solid fa-arrow-right text-xs"></i></a>
+                    </div>
+                </div>
+
+                <div class="min-w-[300px] md:min-w-[380px] snap-center bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden group hover:shadow-xl transition-all duration-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=800&auto=format&fit=crop" alt="Management" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-brand-blue text-xs font-bold uppercase tracking-wide">Management</span>
+                        <h3 class="text-xl font-bold text-brand-dark mt-2 mb-3 group-hover:text-brand-blue transition">Restructuration Agile</h3>
+                        <p class="text-gray-500 text-sm mb-4 line-clamp-3">Accompagnement au changement organisationnel pour un groupe de BTP de 200 collaborateurs.</p>
+                        <a href="#" class="text-brand-dark font-medium text-sm hover:text-brand-blue flex items-center gap-1">Lire l'étude <i class="fa-solid fa-arrow-right text-xs"></i></a>
+                    </div>
+                </div>
+
+                <div class="min-w-[300px] md:min-w-[380px] snap-center bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden group hover:shadow-xl transition-all duration-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=800&auto=format&fit=crop" alt="Chimie" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-brand-blue text-xs font-bold uppercase tracking-wide">Chimie Verte</span>
+                        <h3 class="text-xl font-bold text-brand-dark mt-2 mb-3 group-hover:text-brand-blue transition">Peintures Dépolluantes</h3>
+                        <p class="text-gray-500 text-sm mb-4 line-clamp-3">Lancement sur le marché d'une gamme de peintures intérieures absorbant les COV.</p>
+                        <a href="#" class="text-brand-dark font-medium text-sm hover:text-brand-blue flex items-center gap-1">Lire l'étude <i class="fa-solid fa-arrow-right text-xs"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 bg-brand-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="relative group">
+                    <div class="aspect-[1/1] rounded-3xl overflow-hidden shadow-2xl bg-gray-200">
+                        <img src="https://media.licdn.com/dms/image/v2/D4E03AQFwEWBbDIPC7w/profile-displayphoto-scale_400_400/B4EZeshQGzGcAg-/0/1750946087966?e=2147483647&v=beta&t=V3q40qMx_6LHs9cxjZn6-x3iYu-E7bNKHnq4U4ay-Kk" 
+                             alt="Nicolas VIAU" 
+                             class="w-full h-full object-cover transform transition duration-700 ease-in-out group-hover:scale-110">
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-brand-blue rounded-3xl -z-10"></div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="inline-block px-4 py-1.5 rounded-full border border-gray-300 text-xs font-bold tracking-wider uppercase text-gray-500 mb-2">
+                        À Propos
+                    </div>
+                    <h2 class="text-4xl font-bold text-brand-dark">Nicolas VIAU, fondateur d'Osmose Innovation</h2>
+                    <div class="w-20 h-1.5 bg-brand-blue rounded-full"></div>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        Bonjour, je suis Nicolas VIAU, à la tête d'Osmose Innovation, votre conseiller dédié en innovation.
+                    </p>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        Notre credo est simple : l'innovation ne survient pas par hasard, elle est le fruit d'une synergie méticuleuse entre marketing stratégique, ingénierie de pointe et design créatif.
+                    </p>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        C'est cette philosophie qui nous anime et qui a présidé à la création d'Osmose Innovation.
+                    </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                
+                <div>
+                    <div class="inline-block px-4 py-1.5 rounded-full border border-gray-300 text-xs font-bold tracking-wider uppercase text-gray-500 mb-6">
+                        Contact
+                    </div>
+                    <h2 class="text-4xl font-bold text-brand-dark mb-6">Contactez-nous</h2>
+                    <p class="text-gray-500 mb-12">Prêt à innover ? Discutons de la manière dont nous pouvons soutenir vos projets et vos équipes.</p>
+                    
+                    <div class="space-y-8">
+                        <div>
+                            <p class="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-1">Email:</p>
+                            <a href="mailto:contact@osmose-btp.com" class="text-xl font-medium text-brand-dark hover:text-brand-blue transition">osmose.inovation@gmail.com</a>
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-1">Téléphone:</p>
+                            <p class="text-xl font-medium text-brand-dark">06 79 76 57 50</p>
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-1">Bureau:</p>
+                            <p class="text-xl font-medium text-brand-dark">49 Boulevard Preuilly, Tours 37000, France</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 mt-12">
+                        <a href="#" class="w-12 h-12 rounded-full bg-gray-50 hover:bg-brand-blue hover:text-white text-gray-600 flex items-center justify-center transition shadow-sm">
+                            <i class="fa-brands fa-linkedin-in text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-gray-50 hover:bg-brand-blue hover:text-white text-gray-600 flex items-center justify-center transition shadow-sm">
+                            <i class="fa-brands fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-gray-50 hover:bg-brand-blue hover:text-white text-gray-600 flex items-center justify-center transition shadow-sm">
+                            <i class="fa-brands fa-facebook-f text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 rounded-3xl p-6 lg:p-8 shadow-inner">
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Votre Nom</label>
+                                <input type="text" placeholder="Jean Dupont" class="w-full px-5 py-3 rounded-xl border border-gray-200 focus:border-brand-blue focus:ring-2 focus:ring-blue-100 outline-none transition bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Adresse Email</label>
+                                <input type="email" placeholder="jean@exemple.com" class="w-full px-5 py-3 rounded-xl border border-gray-200 focus:border-brand-blue focus:ring-2 focus:ring-blue-100 outline-none transition bg-white">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                            <textarea rows="6" placeholder="Parlez-nous de votre projet..." class="w-full px-5 py-3 rounded-xl border border-gray-200 focus:border-brand-blue focus:ring-2 focus:ring-blue-100 outline-none transition bg-white resize-none"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-brand-blue hover:bg-blue-700 text-white font-medium py-4 rounded-xl transition shadow-lg shadow-blue-500/30">
+                            Envoyer la demande
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-brand-dark text-white pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                
+                <div class="space-y-6">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-10 flex items-center justify-center">
+                             <svg width="20" height="30" viewBox="0 0 48 71" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M24 71C37.2332 71 48 60.3631 48 47.2897C48 42.993 46.8332 38.9583 44.8177 35.5C46.8332 32.0155 48 28.007 48 23.7103C48 10.6369 37.2332 0 24 0C10.7669 0 4.88839e-05 10.6369 4.88839e-05 23.7103C4.88839e-05 28.007 1.1669 32.0417 3.18237 35.5C1.1669 38.9845 4.88839e-05 42.993 4.88839e-05 47.2897C-0.0264704 60.3631 10.7404 71 24 71ZM24 62.459C15.5404 62.459 8.67186 55.6734 8.67186 47.3159C8.67186 45.6653 8.93705 44.0672 9.44092 42.5738C13.4719 45.6391 18.537 47.4469 24 47.4469C29.463 47.4469 34.5017 45.6391 38.5591 42.5738C39.063 44.0672 39.3282 45.6653 39.3282 47.3159C39.3282 55.6472 32.4597 62.459 24 62.459ZM14.4 35.5C17.0254 33.4041 20.3669 32.1465 24 32.1465C27.6332 32.1465 30.9746 33.4041 33.6 35.5C30.9746 37.5959 27.6332 38.8535 24 38.8535C20.3669 38.8535 17.0254 37.5959 14.4 35.5ZM24 8.54096C32.4597 8.54096 39.3282 15.3266 39.3282 23.6841C39.3282 25.3347 39.063 26.9328 38.5591 28.4262C34.5282 25.3609 29.463 23.5531 24 23.5531C18.537 23.5531 13.4719 25.3609 9.44092 28.4262C8.93705 26.9328 8.67186 25.3347 8.67186 23.6841C8.67186 15.3528 15.5404 8.54096 24 8.54096Z" fill="#2563EB"/>
+                            </svg>
+                        </div>
+                        <span class="font-bold text-2xl">Osmose</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">Abonnez-vous à notre newsletter.</p>
+                    <div class="flex gap-2">
+                        <input type="email" placeholder="Votre email" class="bg-gray-800 border-none rounded-lg px-4 py-2 text-sm w-full focus:ring-1 focus:ring-brand-blue placeholder-gray-500 text-white">
+                        <button class="bg-brand-blue px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-600 transition">OK</button>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-6">Liens Rapides</h4>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li><a href="#home" class="hover:text-white transition">Accueil</a></li>
+                        <li><a href="#services" class="hover:text-white transition">Nos Services</a></li>
+                        <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
+                        <li><a href="#about" class="hover:text-white transition">À Propos</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-6">Réseaux Sociaux</h4>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">LinkedIn</a></li>
+                        <li><a href="#" class="hover:text-white transition">Twitter / X</a></li>
+                        <li><a href="#" class="hover:text-white transition">Facebook</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-6">Légal</h4>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">Mentions Légales</a></li>
+                        <li><a href="#" class="hover:text-white transition">Confidentialité</a></li>
+                        <li><a href="#" class="hover:text-white transition">CGV</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-2 text-sm text-gray-400">
+                    <i class="fa-solid fa-globe"></i>
+                    <span>Français (FR)</span>
+                </div>
+                <p class="text-sm text-gray-500">© 2025 Osmose Innovation. Tous droits réservés.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brand-blue hover:text-white transition"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brand-blue hover:text-white transition"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brand-blue hover:text-white transition"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // === 1. Mobile Menu Toggle ===
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        function toggleMenu() {
+            menu.classList.toggle('hidden');
+        }
+
+        btn.addEventListener('click', toggleMenu);
+
+        // === 2. Counter Animation for Stats ===
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200; // The lower the slower
+
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    
+                    // Lower increment to allow animation to show
+                    const inc = target / speed;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 20);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+            });
+        };
+
+        // Trigger animation when stats section is in view
+        let counted = false;
+        const statsSection = document.querySelector('.counter').closest('div'); // Get parent div of first counter
+        
+        const observer = new IntersectionObserver((entries) => {
+            if(entries[0].isIntersecting && !counted) {
+                animateCounters();
+                counted = true;
+            }
+        });
+
+        if(statsSection) observer.observe(statsSection);
+
+
+        // === 3. Testimonial Slider ===
+        const testimonials = [
+            {
+                quote: "La stratégie d'innovation de Nicolas VIAU est le moteur de notre croissance, fusionnant vision et pragmatisme pour des résultats remarquables.",
+                author: "Nicolas Petit-Jean",
+                role: "Directeur Innovation Hanes & Sodexo",
+                image: "https://image-uviadeo.journaldunet.com/image/450/1044859153/2101020.jpg"
+            },
+            {
+                quote: "La stratégie d'innovation de Nicolas VIAU est le moteur de notre croissance, fusionnant vision et pragmatisme pour des résultats remarquables.",
+                author: "Jeremy Menier",
+                role: "AICO digital",
+                image: "https://www.perseus-web.fr/nar6/uploads/jeremy-menier.jpeg"
+            },
+            {
+                quote: "Leader chez Osmose Innovation, Nicolas V. combine gestion de temps et talents humains pour dépasser les attentes.",
+                author: "Anthony TRUCHOT",
+                role: "Directeur des études du Master Grandes Écoles Excelia",
+                image: "https://www.elije.fr/sites/default/files/images/2024-11/adobe_express_2024-11-05_09.33.11-modified.png"
+            },
+            {
+                quote: "La créativité de Nicolas VIAU chez Osmose Innovation transforme chaque défi en opportunité, apportant des solutions fraîches et efficaces.",
+                author: "Stéphane Cresson",
+                role: "CressonTopo",
+                image: "https://media.licdn.com/dms/image/v2/C5603AQH2dFboXmrMbg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1646979553018?e=2147483647&v=beta&t=vfbhNkYFuYrztRXgwCU_0sE_hAfoDifKowM2Dhkzorg"
+            }
+        ];
+
+        let currentIndex = 0;
+        const imgEl = document.getElementById('t-image');
+        const quoteEl = document.getElementById('t-quote');
+        const authorEl = document.getElementById('t-author');
+        const roleEl = document.getElementById('t-role');
+
+        function updateTestimonial() {
+            quoteEl.classList.remove('fade-in');
+            authorEl.classList.remove('fade-in');
+            roleEl.classList.remove('fade-in');
+            void quoteEl.offsetWidth; // Force reflow
+
+            const t = testimonials[currentIndex];
+            imgEl.src = t.image;
+            quoteEl.textContent = t.quote;
+            authorEl.textContent = t.author;
+            roleEl.textContent = t.role;
+
+            quoteEl.classList.add('fade-in');
+            authorEl.classList.add('fade-in');
+            roleEl.classList.add('fade-in');
+        }
+
+        function nextTestimonial() {
+            currentIndex = (currentIndex + 1) % testimonials.length;
+            updateTestimonial();
+        }
+
+        function prevTestimonial() {
+            currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
+            updateTestimonial();
+        }
+
+        // Initialize Testimonial
+        updateTestimonial();
+    </script>
+
+</body>
+</html>
